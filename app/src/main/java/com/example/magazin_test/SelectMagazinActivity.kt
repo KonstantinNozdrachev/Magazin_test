@@ -30,20 +30,19 @@ class SelectMagazinActivity : AppCompatActivity() {
 
 
 
-        apiInterface.enqueue(object : Callback<Magazin>, CustomAdapter.ItemClickListener {
-            override fun onResponse(call: Call<Magazin>?, response: Response<Magazin>?) {
-                response?.body()?.campaigns?.let {
-                    val adapter = CustomAdapter(it, this)
+        apiInterface.enqueue(object : Callback<SearchResponse>, CustomAdapter.ItemClickListener {
+            override fun onResponse(call: Call<SearchResponse>?, response: Response<SearchResponse>?) {
+
+                val body = response?.body()
+                val campaigns = body?.campaigns ?: emptyList()
+                val products = body?.products ?: emptyList()
+                val adapter = CustomAdapter(campaigns, products, this)
 
 
-
-
-                    recyclerview.adapter = adapter
-                }
-//
+                recyclerview.adapter = adapter
             }
 
-            override fun onFailure(call: Call<Magazin>?, t: Throwable?) {
+            override fun onFailure(call: Call<SearchResponse>?, t: Throwable?) {
 
             }
 

@@ -7,4 +7,8 @@ data class Campaign(
     val imageUrl: String,
     val name: String,
     val paymentTime: String
-)
+): ListItem {
+    override fun getViewType(): Int {
+        return CustomAdapter.CAMPAIGN
+    }
+}

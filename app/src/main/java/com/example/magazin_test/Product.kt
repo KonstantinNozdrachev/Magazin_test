@@ -10,4 +10,9 @@ data class Product(
     val name: String,
     val paymentTime: String,
     val price: String
-)
+) : ListItem{
+    override fun getViewType(): Int {
+        return CustomAdapter.PRODUCT
+    }
+
+}

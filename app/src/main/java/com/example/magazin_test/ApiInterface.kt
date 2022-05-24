@@ -4,15 +4,14 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiInterface {
     @GET("search")
-    fun getCampaigns(@Query("search_string") search: String): Call<Magazin>
+    fun getCampaigns(@Query("search_string") search: String): Call<SearchResponse>
 
-    @GET("search")
-    fun getPhoneObject(@Query("search_string") search: String): Call<PhoneObject>
+    //@GET("search")
+   // fun getPhoneObject(@Query("search_string") search: String): Call<PhoneObject>
 
     @GET("login_step1")
     fun getPhone(@Query("phone") phone: String): Call<Phone>

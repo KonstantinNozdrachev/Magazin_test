@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Magazin_test">
         <activity
+            android:name=".SelectObjectActivity"
+            android:exported="false" />
+        <activity
             android:name=".ObjectActivity"
             android:exported="false" />
         <activity
@@ -19,13 +22,10 @@
             android:exported="false" />
         <activity
             android:name=".SearchActivity"
-            android:exported="true"></activity>
-        <activity
-            android:name=".SelectObjectActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SelectMagazinActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".RegistrationActivity"
             android:exported="true">
