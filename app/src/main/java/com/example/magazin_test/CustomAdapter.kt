@@ -36,13 +36,19 @@ class CustomAdapter(
         val main_annotation: TextView = itemView.findViewById(R.id.main_annotation)
 
         fun bind(position: Int) {
-            val campaign = mList[position] as Campaign
 
+
+
+            val campaign = mList[position] as Campaign
+                   itemView.setOnClickListener {
+                       campaign.id.let { it -> mItemClickListener.onItemClick(it) }
+                   }
             Picasso.get().load(campaign.imageUrl).into(imageView)
             main_cash.text = campaign.cashback
             main_annotation.text = campaign.paymentTime
             main_titl.text = campaign.name
         }
+
     }
 
     private inner class ProductViewHolder(itemView: View) :
@@ -54,11 +60,17 @@ class CustomAdapter(
 
         fun bind(position: Int) {
             val product = mList[position] as Product
-            Picasso.get().load(product.campaignImageUrl).into(image)
+            itemView.setOnClickListener {
+                product.id.let { it -> mItemClickListener.onItemClick(it) }
+            }
+            Picasso.get().load(product.imageUrls[0]).into(image)
             name.text = product.name
             price.text = product.price
 
         }
+
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -97,10 +109,13 @@ class CustomAdapter(
 
 
 
+
 ///////////////////////////////////////////////////////////////
 
 /*
-
+interface ItemClickListener {
+        fun onItemClick(position: Int)
+    }
 
 override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
